@@ -1,0 +1,249 @@
+﻿@model Prices
+@{
+    ViewData["Title"] = "Price";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HouseRent4</title>
+    <link rel="icon" type="image/x-icon" href="/assets/195492.png">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css" />
+    <script src="https://unpkg.com/scrollreveal@4.0.0-beta.6"></script>
+</head>
+<body>
+
+    <header class="site-header mt-4">
+        <div class="">
+            <div class="header-content">
+                <div class="top-menu scroll-reveal position-static">
+                    <div class="menu justify-content-center bg-warning rounded shadow">
+                        <div class="title-bar" data-responsive-toggle="main-nav" data-hide-for="medium">
+                            <button class="menu-icon dark" type="button" data-toggle="main-nav"></button>
+                            <div class="title-bar-title">Меню</div>
+                        </div>
+
+                        <nav id="main-nav" data-animate="menu-in menu-out">
+                            <ul class="main-navigation">
+                                <li><a class="m-anim" asp-controller="Home" asp-action="Index" data-text="Home">Към сайта</a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="AdminIndex" data-text="Home">Начало 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="Specials" data-text="Specials">Екстри
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="About" data-text="About">За нас 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg> 
+                                </a></li>
+                                <li><a class="m-active" asp-controller="Admin" asp-action="Price" data-text="Menu Cart">Цени
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="Contact" data-text="Contact">Връзка с нас 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="Gallery" data-text="Contact">Галерия 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                
+                            </ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <h1 class="text-center mt-5">Home - edit</h1>
+
+    <div class="row ml-0 mr-0 mt-5">
+        <div class="col">
+
+            
+                <div class="tabs-panel is-active" id="panel1">
+                    <div class="menu-content">
+                        <div class="menu-section mx-auto">
+                            <table>
+                                <tr>
+                                    <td><span>Понеделник</span></td>
+                                    <td><span>@Model.Price1</span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Вторник</span></td>
+                                    <td><span>@Model.Price2</span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Сряда</span></td>
+                                    <td><span>@Model.Price3</span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Четвъртък</span></td>
+                                    <td><span>@Model.Price4</span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Петък</span></td>
+                                    <td><span>@Model.Price5</span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Събота</span></td>
+                                    <td><span>@Model.Price6</span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Неделя</span></td>
+                                    <td><span>@Model.Price7</span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!--.menu-section-->
+
+                    </div>
+                    <!--.menu-section-->
+                </div>
+                <!--.menu-content-->
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-2 h-100 m-auto">
+        <form method="post">
+            <div class="input-group rounded">
+                <span class="input-group-text">Понеделник</span>
+                <input asp-for="Price1" onchange="onChangeTextArea()" rows="1" class="form-control" aria-label="Място за текст"></input>
+            </div>
+            <div class="input-group rounded">
+                <span class="input-group-text">Вторник</span>
+                <input asp-for="Price2" onchange="onChangeTextArea()" rows="1" class="form-control" aria-label="Място за текст"></input>
+            </div>
+            <div class="input-group rounded">
+                <span class="input-group-text">Сряда</span>
+                <input asp-for="Price3" onchange="onChangeTextArea()" rows="1" class="form-control" aria-label="Място за текст"></input>
+            </div>
+            <div class="input-group rounded">
+                <span class="input-group-text">Четвъртък</span>
+                <input asp-for="Price4" onchange="onChangeTextArea()" rows="1" class="form-control" aria-label="Място за текст"></input>
+            </div>
+            <div class="input-group rounded">
+                <span class="input-group-text">Петък</span>
+                <input asp-for="Price5" onchange="onChangeTextArea()" rows="1" class="form-control" aria-label="Място за текст"></input>
+            </div>
+            <div class="input-group rounded">
+                <span class="input-group-text">Събота</span>
+                <input asp-for="Price6" onchange="onChangeTextArea()" rows="1" class="form-control" aria-label="Място за текст"></input>
+            </div>
+            <div class="input-group rounded">
+                <span class="input-group-text">Неделя</span>
+                <input asp-for="Price7" onchange="onChangeTextArea()" rows="1" class="form-control" aria-label="Място за текст"></input>
+            </div>
+            <div class="input-group rounded justify-content-center">
+                <button type="submit" class="btn btn-outline-warning shadow rounded">Запази промените</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function onChangeTextArea() {
+            var text = document.getElementsByClassName('header-txt')[0].textContent;
+            var textArea = document.getElementsByClassName('form-control')[0].value;
+            console.log(text);
+            console.log(textArea);
+            document.getElementsByClassName('header-txt')[0].innerHTML = document.getElementsByClassName('form-control')[0].value;
+            document.getElementsByClassName('header-txt')[1].innerHTML = document.getElementsByClassName('form-control')[1].value;
+
+        }
+    </script>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/what-input/5.0.2/what-input.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js"></script>
+    <script src="/js/app.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+    <script type="text/javascript">
+        $('.slider').slick({
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 3500,
+            arrows: false,
+            fade: true,
+            cssEase: 'linear'
+        });
+
+    </script>
+
+    <script>
+        $(window).on('load', function () {
+            $("#preloader").fadeOut();
+        });
+    </script>
+
+    <environment include="Development">
+        <script src="~/Identity/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"
+                asp-fallback-src="~/Identity/lib/jquery-validation/dist/jquery.validate.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.validator"
+                crossorigin="anonymous"
+                integrity="sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o+ok+t/SAKlL5mvXLr0OXNi1Hp">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.9/jquery.validate.unobtrusive.min.js"
+                asp-fallback-src="~/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive"
+                crossorigin="anonymous"
+                integrity="sha384-ifv0TYDWxBHzvAk2Z0n8R434FL1Rlv/Av18DXE43N/1rvHyOG4izKst0f2iSLdds">
+        </script>
+    </environment>
+</body>
+</html>
+

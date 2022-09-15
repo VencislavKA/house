@@ -1,0 +1,222 @@
+﻿@model List<Gallery>
+@{
+    ViewData["Title"] = "Галерия - Администрация";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HouseRent4</title>
+    <link rel="icon" type="image/x-icon" href="/assets/195492.png">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css" />
+    <script src="https://unpkg.com/scrollreveal@4.0.0-beta.6"></script>
+
+
+
+    <link rel="stylesheet" href="/photoswipe/dist/photoswipe.css">
+
+
+
+</head>
+<body>
+    <header class="site-header mt-4">
+        <div class="">
+            <div class="header-content">
+                <div class="top-menu scroll-reveal position-static">
+                    <div class="menu justify-content-center bg-warning rounded shadow">
+                        <div class="title-bar" data-responsive-toggle="main-nav" data-hide-for="medium">
+                            <button class="menu-icon dark" type="button" data-toggle="main-nav"></button>
+                            <div class="title-bar-title">Меню</div>
+                        </div>
+
+                        <nav id="main-nav" data-animate="menu-in menu-out">
+                            <ul class="main-navigation">
+                                <li><a class="m-anim" asp-controller="Home" asp-action="Index" data-text="Home">Към сайта</a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="AdminIndex" data-text="Home">Начало 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="Specials" data-text="Specials">Екстри
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="About" data-text="About">За нас 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg> 
+                                </a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="Price" data-text="Menu Cart">Цени
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="Contact" data-text="Contact">Връзка с нас 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                <li><a class="m-active" asp-controller="Admin" asp-action="Gallery" data-text="Contact">Галерия 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                
+                            </ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container mt-3">
+
+
+   <div>
+       <p>Не повече от 2 снимки за началото на главната страница</p>
+       <p>Не повече от 6 снимки за галерията на главната страница</p>
+       <form method="post" enctype="multipart/form-data">
+            <label for="image">Изберете къде да бъде показвана снимката:</label>
+            <select name="Title" id="Title">
+                <option value="gallery">Галерия</option>
+                <option value="mainG">Главна страница галерия</option>
+                <option value="main">Главна страница начало</option>
+            </select>
+            <label for="image">Добавяне на снимка:</label>
+            <input type="file" id="image" name="image" accept="image/png, image/jpeg">
+            <button class="btn btn-outline-warning" type="submit">Запази</button>
+       </form>
+   </div>
+
+
+  <hr class="mt-2 mb-5">
+
+  <div class="row text-center text-lg-start mb-5" id="gallery--getting-started">
+      @if(Model == null){
+          <p class="text-black-50">Няма добавени снимки в галерията</p>
+      }
+        @foreach (var item in Model)
+        {
+               <div class="col-lg-3 col-md-4 col-6">
+                  <div class="border rounded shadow">
+                    <a class="d-block mb-4 h-100" href="@item.Image"
+                      data-pswp-width="@item.imageWidth" 
+                      data-pswp-height="@item.imageHeight" 
+                      target="_blank">
+                      <img class="img-fluid img-thumbnail" src="@item.Image" alt="" />
+                    </a>
+                    <form action="DeletePhoto" method="post">
+                        <input type="text" id="image" name="image" value="@item.Image" hidden>
+                        <button type="submit" class="btn btn-danger mb-4">Изтрий</button>
+                    </form>
+                  </div>
+               </div>
+               
+        }
+  </div>
+</div>
+        
+        <script type="module">
+
+            // Include Lightbox 
+import PhotoSwipeLightbox from '/photoswipe/dist/photoswipe-lightbox.esm.js';
+
+const lightbox = new PhotoSwipeLightbox({
+  // may select multiple "galleries"
+  gallery: '#gallery--getting-started',
+
+  // Elements within gallery (slides)
+  children: 'a',
+
+  // setup PhotoSwipe Core dynamic import
+  pswpModule: () => import('/photoswipe/dist/photoswipe.esm.js')
+});
+lightbox.init();
+
+        </script>
+
+
+
+
+
+
+
+    <div id="preloader">
+        <div class="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/what-input/5.0.2/what-input.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js"></script>
+    <script src="/js/app.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+    <script type="text/javascript">
+        $('.slider').slick({
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 3500,
+            arrows: false,
+            fade: true,
+            cssEase: 'linear'
+        });
+
+    </script>
+
+    <script>
+        $(window).on('load', function () {
+            $("#preloader").fadeOut();
+        });
+    </script>
+
+
+        </main>
+    </div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/what-input/5.0.2/what-input.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js"></script>
+<script src="/js/app.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
+<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+<script type="text/javascript">
+    $('.slider').slick({
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 3500,
+        arrows: false,
+        fade: true,
+        cssEase: 'linear'
+    });
+
+</script>
+
+<script>
+    $(window).on('load', function () {
+        $("#preloader").fadeOut();
+    });
+</script>
+
+</body>
+</html>

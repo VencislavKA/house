@@ -1,0 +1,360 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Specials";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HouseRent4</title>
+    <link rel="icon" type="image/x-icon" href="/assets/195492.png">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css" />
+    <script src="https://unpkg.com/scrollreveal@4.0.0-beta.6"></script>
+</head>
+<body>
+
+    <header class="site-header mt-4">
+        <div class="">
+            <div class="header-content">
+                <div class="top-menu scroll-reveal position-static">
+                    <div class="menu justify-content-center bg-warning rounded shadow">
+                        <div class="title-bar" data-responsive-toggle="main-nav" data-hide-for="medium">
+                            <button class="menu-icon dark" type="button" data-toggle="main-nav"></button>
+                            <div class="title-bar-title">Меню</div>
+                        </div>
+
+                        <nav id="main-nav" data-animate="menu-in menu-out">
+                            <ul class="main-navigation">
+                                <li><a class="m-anim" asp-controller="Home" asp-action="Index" data-text="Home">Към сайта</a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="AdminIndex" data-text="Home">Начало 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                <li><a class="m-active" asp-controller="Admin" asp-action="Specials" data-text="Specials">Екстри
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="About" data-text="About">За нас 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg> 
+                                </a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="Price" data-text="Menu Cart">Цени
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="Contact" data-text="Contact">Връзка с нас 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                <li><a class="m-anim" asp-controller="Admin" asp-action="Gallery" data-text="Contact">Галерия 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                    </svg>
+                                </a></li>
+                                
+                            </ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <h1 class="text-center mt-5">Specials - edit</h1>
+
+    <div class="row container w-100 mx-auto">
+        <section id="specials-grid" class="month-specials" data-scroll-reveal="enter from the bottom after 0.9s">
+            <div class="container">
+                <h1 class="header-txt">@Model.Specials.title</h1>
+                <div class="divider">
+                    <?xml version="1.0" encoding="utf-8" ?>
+                    <!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1930 255.5" style="enable-background:new 0 0 1930 255.5;" xml:space="preserve">
+                    <style type="text/css">
+                        .st0 {
+                            fill: none;
+                            stroke: #3c3c3c;
+                            stroke-width: 10;
+                            stroke-linecap: square;
+                            stroke-miterlimit: 10;
+                        }
+</style>
+                    <polyline class="st0" points="1224,171.8 1181.3,171.8 1139.2,129.6 1065,203.9 970.5,110.4 876,203.6 801.8,129.4 759.7,171.5
+                                    717,171.5 " />
+                    <polyline class="st0" points="5,131.5 757.3,131.5 801.8,176.1 885.9,91.9 868.3,74.2 831.5,111 870.4,149.9 970.2,50.2 1070,149.9
+                                    1108.8,111 1072.1,74.2 1054.4,91.9 1138.5,176.1 1183.1,131.5 1925,131.5 " />
+                    <rect x="921.9" y="26.7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 231.426 707.2043)" class="st0" width="95" height="95" />
+                    <rect x="921.9" y="99.7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 179.8072 728.5855)" class="st0" width="95" height="95" />
+                    <rect x="940.3" y="178.1" transform="matrix(0.7071 -0.7071 0.7071 0.7071 137.3893 746.1556)" class="st0" width="58.2" height="58.2" />
+                                </svg>
+                </div>
+                <!--.divider-->
+                <div class="specials-content">
+                    @if(Model.mainG.Count() == 0)
+                            {
+                                <p class="text-center">Няма добжавени снимки в главната галерия</p>
+                            }
+                            @for (int i = 0; i < Model.mainG.Count(); i++)
+                                {
+                                    var number = i + 1;
+                                    var cl = "special-img img-0" + number;
+                                    var image = Model.mainG[i].Image.Split('\\').Last();
+
+                                    var title = string.Empty;
+                                    var text = string.Empty;
+                                    var price = string.Empty;
+                                    if (i == 0)
+                                    {
+                                        title = Model.Specials.title1;
+                                        text = Model.Specials.text1;
+                                        price = Model.Specials.price1;
+                                    }
+                                    else if (i == 1)
+                                    {
+                                        title = Model.Specials.title2;
+                                        text = Model.Specials.text2;
+                                        price = Model.Specials.price2;
+                                    }
+                                    else if (i == 2)
+                                    {
+                                        title = Model.Specials.title3;
+                                        text = Model.Specials.text3;
+                                        price = Model.Specials.price3;
+                                    }
+                                    else if (i == 3)
+                                    {
+                                        title = Model.Specials.title4;
+                                        text = Model.Specials.text4;
+                                        price = Model.Specials.price4;
+                                    }
+                                    else if (i == 4)
+                                    {
+                                        title = Model.Specials.title5;
+                                        text = Model.Specials.text5;
+                                        price = Model.Specials.price5;
+                                    }
+                                    else if (i == 5)
+                                    {
+                                        title = Model.Specials.title6;
+                                        text = Model.Specials.text6;
+                                        price = Model.Specials.price6;
+                                    }
+                                    <div class="special">
+                                    <div class="@cl" >
+                                        <img src="/Gallery/Images/@image" style="height:100%" />
+                                    </div>
+                                    <div class="special-items spec-01" >
+                                        <h2 class="scroll-reveal" data-origin="top" data-distance="20%">@title</h2>
+                                        <span class="line scroll-reveal" data-origin="top" data-distance="20%"></span>
+                                        <p class="scroll-reveal" data-origin="bottom" data-distance="30%">@text</p>
+                                        <span class="scroll-reveal" data-origin="bottom" data-distance="60%">@price</span>
+                                    </div>
+                                </div>  
+                            }
+                </div>
+                <!--.specials-content-->
+            </div>
+            <!--.container-->
+        </section>
+        <!--.month-specials-->
+    </div>
+        <div class="h-100 my-auto">
+            <form method="post" class="mx-auto">
+                <div class="w-25 mx-auto input-group rounded">
+                    <input type="text" class="form-control" placeholder="Заглавие" asp-for="@Model.Specials.title" aria-describedby="basic-addon1">
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <div class="input-group rounded">
+                                        
+                                        <input type="text" class="form-control" placeholder="Заглавие 1" asp-for="@Model.Specials.title1" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Текст 1" asp-for="@Model.Specials.text1" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Цена 1" asp-for="@Model.Specials.price1" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control"  placeholder="Заглавие 2" asp-for="@Model.Specials.title2" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Текст 2" asp-for="@Model.Specials.text2" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control"  placeholder="Цена 2" asp-for="@Model.Specials.price2" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Заглавие 3" asp-for="@Model.Specials.title3" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Текст 3" asp-for="@Model.Specials.text3" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Цена 3" asp-for="@Model.Specials.price3" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Заглавие 4" asp-for="@Model.Specials.title4" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Текст 4" asp-for="@Model.Specials.text4" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Цена 4" asp-for="@Model.Specials.price4" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Заглавие 5" asp-for="@Model.Specials.title5" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Текст 5" asp-for="@Model.Specials.text5" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Цена 5" asp-for="@Model.Specials.price5" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Заглавие 6" asp-for="@Model.Specials.title6" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Текст 6" asp-for="@Model.Specials.text6" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group rounded">
+                                        <input type="text" class="form-control" placeholder="Цена 6" asp-for="@Model.Specials.price6" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="input-group rounded justify-content-center">
+                    <button type="submit" class="btn btn-outline-warning shadow rounded"> Запази промените </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function onChangeTextArea() {
+            var text = document.getElementsByClassName('header-txt')[0].textContent;
+            var textArea = document.getElementsByClassName('form-control')[0].value;
+            console.log(text);
+            console.log(textArea);
+            document.getElementsByClassName('header-txt')[0].innerHTML = document.getElementsByClassName('form-control')[0].value;
+            document.getElementsByClassName('header-txt')[1].innerHTML = document.getElementsByClassName('form-control')[1].value;
+
+        }
+    </script>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/what-input/5.0.2/what-input.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js"></script>
+    <script src="/js/app.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+    <script type="text/javascript">
+        $('.slider').slick({
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 3500,
+            arrows: false,
+            fade: true,
+            cssEase: 'linear'
+        });
+
+    </script>
+
+    <script>
+        $(window).on('load', function () {
+            $("#preloader").fadeOut();
+        });
+    </script>
+
+    <environment include="Development">
+        <script src="~/Identity/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"
+                asp-fallback-src="~/Identity/lib/jquery-validation/dist/jquery.validate.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.validator"
+                crossorigin="anonymous"
+                integrity="sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o+ok+t/SAKlL5mvXLr0OXNi1Hp">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.9/jquery.validate.unobtrusive.min.js"
+                asp-fallback-src="~/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive"
+                crossorigin="anonymous"
+                integrity="sha384-ifv0TYDWxBHzvAk2Z0n8R434FL1Rlv/Av18DXE43N/1rvHyOG4izKst0f2iSLdds">
+        </script>
+    </environment>
+</body>
+</html>
+
+
+
